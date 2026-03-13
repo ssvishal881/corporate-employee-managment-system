@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+body {
+  overflow-y: scroll;
+}
+
+/* in index.css */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Hide browser default password reveal icon */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}
+
+input[type="password"]::-webkit-textfield-decoration-container {
+  display: none !important;
+}
