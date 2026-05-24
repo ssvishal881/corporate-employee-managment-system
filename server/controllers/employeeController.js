@@ -132,7 +132,7 @@ const updateEmployee = async (req, res) => {
 
     const updateUser = await User.findByIdAndUpdate(
       { _id: employee.userId },
-      { name }
+      { name },
     );
     const updateEmployee = await Employee.findByIdAndUpdate(
       { _id: id },
@@ -141,7 +141,7 @@ const updateEmployee = async (req, res) => {
         designation,
         salary,
         department,
-      }
+      },
     );
 
     if (!updateEmployee || !updateUser) {
@@ -150,7 +150,9 @@ const updateEmployee = async (req, res) => {
         .json({ success: false, error: "document not found" });
     }
 
-    return res.status(200).json({ success: true, error: "employee update " });
+    return res
+      .status(200)
+      .json({ success: true, message: "Employee updated " });
   } catch (error) {
     console.error("updateEmployee error:", error);
     return res
@@ -164,7 +166,7 @@ const fetchEmployeesById = async (req, res) => {
   try {
     const employees = await Employee.find({ department: id }).populate(
       "userId",
-      "name profileImage"
+      "name profileImage",
     );
 
     return res.status(200).json({ success: true, employees });
