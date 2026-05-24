@@ -10,7 +10,7 @@ import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", getDepartments); // GET /api/department
+router.get("/", authMiddleware, getDepartments); // GET /api/department
 router.post("/add", authMiddleware, addDepartment); // POST /api/department/add
 router.get("/:id", authMiddleware, getDepartment);
 router.put("/:id", authMiddleware, updateDepartment);
