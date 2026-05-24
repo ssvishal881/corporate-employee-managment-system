@@ -29,12 +29,12 @@ const EmployeeAttendanceReport = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/attendance/my-attendance?month=${month}&year=${year}`,
+        `https://corporate-employee-managment-system-sandy.vercel.app/api/attendance/my-attendance?month=${month}&year=${year}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       if (res.data.success) {
@@ -133,7 +133,7 @@ const EmployeeAttendanceReport = () => {
                     <td className="px-6 py-4">
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-medium ${statusStyle(
-                          rec.status
+                          rec.status,
                         )}`}
                       >
                         {rec.status || "Not Marked"}

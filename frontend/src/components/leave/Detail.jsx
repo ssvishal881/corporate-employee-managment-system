@@ -11,12 +11,12 @@ const Detail = () => {
     const fetchLeave = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/leave/detail/${id}`,
+          `https://corporate-employee-managment-system-sandy.vercel.app/api/leave/detail/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-          }
+          },
         );
 
         if (response.data.success) {
@@ -33,13 +33,13 @@ const Detail = () => {
   const changeStatus = async (id, status) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/leave/${id}`,
+        `https://corporate-employee-managment-system-sandy.vercel.app/api/leave/${id}`,
         { status },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       if (response.data.success) {
@@ -62,7 +62,7 @@ const Detail = () => {
       {/* ===== PROFILE HEADER ===== */}
       <div className="flex flex-col items-center mb-10">
         <img
-          src={`http://localhost:5000/${
+          src={`https://corporate-employee-managment-system-sandy.vercel.app/${
             leave.employeeId.userId.profileImage || ""
           }`}
           className="w-36 h-36 rounded-full border-4 border-teal-500 object-cover object-top shadow"

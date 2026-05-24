@@ -51,11 +51,14 @@ export const EmployeeButtons = ({ _id }) => {
 /* ================= FETCH DEPARTMENTS ================= */
 export const fetchDepartments = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/api/department", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+    const response = await axios.get(
+      "https://corporate-employee-managment-system-sandy.vercel.app/api/department",
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       },
-    });
+    );
     return response.data.success ? response.data.departments : [];
   } catch (error) {
     console.error("Fetch department error", error);
@@ -69,7 +72,7 @@ export const getEmployees = async (departmentId) => {
     if (!departmentId) return [];
 
     const res = await axios.get(
-      `http://localhost:5000/api/employee/department/${departmentId}`,
+      `https://corporate-employee-managment-system-sandy.vercel.app/api/employee/department/${departmentId}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

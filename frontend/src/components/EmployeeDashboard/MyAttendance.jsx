@@ -29,12 +29,12 @@ const MyAttendance = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:5000/api/attendance/my-attendance?month=${month}&year=${year}`,
+        `https://corporate-employee-managment-system-sandy.vercel.app/api/attendance/my-attendance?month=${month}&year=${year}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       if (res.data.success) {

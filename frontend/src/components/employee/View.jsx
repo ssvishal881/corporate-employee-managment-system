@@ -10,12 +10,12 @@ const View = () => {
     const fetchEmployee = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/employee/${id}`,
+          `https://corporate-employee-managment-system-sandy.vercel.app/api/employee/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-          }
+          },
         );
 
         if (response.data.success) {
@@ -44,7 +44,7 @@ const View = () => {
             {/* LEFT : IMAGE */}
             <div className="flex justify-center md:w-1/2">
               <img
-                src={`http://localhost:5000/${employee.userId.profileImage}`}
+                src={`https://corporate-employee-managment-system-sandy.vercel.app/${employee.userId.profileImage}`}
                 alt="Employee"
                 className="w-72 h-72 object-cover object-top rounded-full border-4 border-teal-500 shadow-lg"
               />

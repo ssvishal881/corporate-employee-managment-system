@@ -14,11 +14,14 @@ const List = () => {
     const fetchEmployees = async () => {
       setEmpLoading(true);
       try {
-        const response = await axios.get("http://localhost:5000/api/employee", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        const response = await axios.get(
+          "https://corporate-employee-managment-system-sandy.vercel.app/api/employee",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           },
-        });
+        );
 
         if (response.data.success) {
           const data = response.data.employees.map((emp, index) => ({
@@ -29,7 +32,7 @@ const List = () => {
             dob: emp.dob ? new Date(emp.dob).toLocaleDateString("en-GB") : "",
             profileImage: (
               <img
-                src={`http://localhost:5000/${emp.userId?.profileImage || ""}`}
+                src={`https://corporate-employee-managment-system-sandy.vercel.app/${emp.userId?.profileImage || ""}`}
                 alt={emp.userId?.name}
                 className="w-10 h-10 rounded-full object-cover border-2 border-teal-500 shadow"
               />
@@ -53,7 +56,7 @@ const List = () => {
   const handleFilter = (e) => {
     const keyword = e.target.value || "";
     const records = employees.filter((emp) =>
-      emp.name.toLowerCase().includes(keyword.toLowerCase())
+      emp.name.toLowerCase().includes(keyword.toLowerCase()),
     );
     setFilterdEmployees(records);
   };

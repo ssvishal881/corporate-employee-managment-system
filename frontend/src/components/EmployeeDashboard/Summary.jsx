@@ -24,12 +24,12 @@ const Summary = () => {
   const fetchSummary = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/dashboard/employee-summary",
+        "https://corporate-employee-managment-system-sandy.vercel.app/api/dashboard/employee-summary",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
       if (res.data.success) setSummary(res.data);
     } catch (err) {
@@ -40,12 +40,12 @@ const Summary = () => {
   const fetchSalary = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/salary/${user._id}/employee`,
+        `https://corporate-employee-managment-system-sandy.vercel.app/api/salary/${user._id}/employee`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
       if (res.data.success && res.data.salary.length > 0) {
         setSalary(res.data.salary.at(-1).netSalary);
@@ -81,7 +81,7 @@ const Summary = () => {
         </div>
 
         <img
-          src={`http://localhost:5000/${user.profileImage}`}
+          src={`https://corporate-employee-managment-system-sandy.vercel.app/${user.profileImage}`}
           alt="Profile"
           className="w-24 h-24 rounded-full border-4 border-teal-500 object-cover object-top"
         />

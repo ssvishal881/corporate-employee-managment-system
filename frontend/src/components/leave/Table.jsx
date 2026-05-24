@@ -10,11 +10,14 @@ const Table = () => {
 
   const fetchLeaves = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/leave", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      const response = await axios.get(
+        "https://corporate-employee-managment-system-sandy.vercel.app/api/leave",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         },
-      });
+      );
 
       if (response.data.success) {
         let sno = 1;
@@ -28,7 +31,7 @@ const Table = () => {
           days:
             Math.ceil(
               (new Date(leave.endDate) - new Date(leave.startDate)) /
-                (1000 * 60 * 60 * 24)
+                (1000 * 60 * 60 * 24),
             ) + 1,
           status: leave.status,
           action: <LeaveButtons Id={leave._id} />,
@@ -48,7 +51,7 @@ const Table = () => {
   const filterByInput = (e) => {
     const search = e.target.value.toLowerCase();
     const data = leaves.filter((row) =>
-      row.employeeId.toLowerCase().includes(search)
+      row.employeeId.toLowerCase().includes(search),
     );
     setFilterdLeaves(data);
   };
@@ -56,7 +59,7 @@ const Table = () => {
   const filterdByButton = (status) => {
     const search = status.toLowerCase();
     const data = leaves.filter((row) =>
-      row.status.toLowerCase().includes(search)
+      row.status.toLowerCase().includes(search),
     );
     setFilterdLeaves(data);
   };

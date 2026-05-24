@@ -31,13 +31,13 @@ const Setting = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/setting/change-password",
+        "https://corporate-employee-managment-system-sandy.vercel.app/api/setting/change-password",
         setting,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       if (response.data.success) {

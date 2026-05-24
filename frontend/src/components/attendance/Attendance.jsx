@@ -16,11 +16,14 @@ const Attendance = () => {
   const fetchAttendance = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/attendance", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      const response = await axios.get(
+        "https://corporate-employee-managment-system-sandy.vercel.app/api/attendance",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         },
-      });
+      );
 
       if (response.data.success) {
         const data = response.data.attendance.map((att, index) => ({
@@ -56,7 +59,7 @@ const Attendance = () => {
   const handleFilter = (e) => {
     const keyword = e.target.value || "";
     const records = attendance.filter((emp) =>
-      emp.name.toLowerCase().includes(keyword.toLowerCase())
+      emp.name.toLowerCase().includes(keyword.toLowerCase()),
     );
     setFilterdAttendance(records);
   };

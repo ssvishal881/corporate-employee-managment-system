@@ -26,12 +26,12 @@ const AdminSummary = () => {
     const fetchSummary = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/dashboard/summary",
+          "https://corporate-employee-managment-system-sandy.vercel.app/api/dashboard/summary",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-          }
+          },
         );
         setSummary(res.data);
       } catch (error) {

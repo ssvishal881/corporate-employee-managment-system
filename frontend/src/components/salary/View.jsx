@@ -17,7 +17,7 @@ const View = () => {
       const role = id ? "admin" : user.role;
 
       const response = await axios.get(
-        `http://localhost:5000/api/salary/${targetId}/${role}`,
+        `https://corporate-employee-managment-system-sandy.vercel.app/api/salary/${targetId}/${role}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

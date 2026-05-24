@@ -17,12 +17,12 @@ const AttendanceReport = () => {
       }
 
       const response = await axios.get(
-        `http://localhost:5000/api/attendance/report?${query.toString()}`,
+        `https://corporate-employee-managment-system-sandy.vercel.app/api/attendance/report?${query.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       if (response.data.success) {
@@ -123,8 +123,8 @@ const AttendanceReport = () => {
                             data.status === "present"
                               ? "text-green-600"
                               : data.status === "absent"
-                              ? "text-red-600"
-                              : "text-yellow-600"
+                                ? "text-red-600"
+                                : "text-yellow-600"
                           }`}
                         >
                           {data.status}

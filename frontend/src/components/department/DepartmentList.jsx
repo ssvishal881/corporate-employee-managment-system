@@ -12,11 +12,14 @@ const DepartmentList = () => {
   const fetchDepartments = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/department", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      const response = await axios.get(
+        "https://corporate-employee-managment-system-sandy.vercel.app/api/department",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         },
-      });
+      );
 
       if (response.data.success) {
         const data = response.data.departments.map((dep, index) => ({
@@ -47,7 +50,7 @@ const DepartmentList = () => {
   const filterDepartments = (e) => {
     const keyword = e.target.value.toLowerCase();
     setFilteredDepartments(
-      departments.filter((d) => d.dep_name.toLowerCase().includes(keyword))
+      departments.filter((d) => d.dep_name.toLowerCase().includes(keyword)),
     );
   };
 
