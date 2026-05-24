@@ -19,7 +19,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://corporate-employee-managment-system-sandy.vercel.app//api/auth/login",
+        "https://corporate-employee-managment-system-sandy.vercel.app/api/auth/login",
         { email, password },
       );
 
